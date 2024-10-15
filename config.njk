@@ -22,8 +22,8 @@ collections:
       - label: "Job Title"
         name: "jobTitle"
         widget: "string"
-      - label: "Image"
-        name: "image"
+      - label: "Picture"
+        name: "picture"
         widget: "image"
         required: false
   - name: "blogs"
@@ -54,6 +54,13 @@ collections:
         name: "leadImage"
         widget: "image"
         allow_multiple: false
+      - label: "Lead Image Alt Text"
+        name: "leadImageAlt"
+        widget: "string"
+      - label: "Lead Image Caption"
+        name: "leadImageCaption"
+        widget: "string"
+        required: false
       - label: "Authors"
         name: "authors"
         widget: "list"
@@ -65,10 +72,6 @@ collections:
           value_field: "name"
           search_fields: ["name", "job-title"]
           display_fields: ["name", "job-title"]
-      - label: "Content"
-        name: "content"
-        widget: "markdown"
-        buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"]
       - label: "Components"
         name: "components"
         widget: "list"
