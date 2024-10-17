@@ -100,20 +100,31 @@ collections:
   - label: "FAQs"
     name: "faqs"
     folder: "content/faqs"
-    create: true
+    create: false
     fields:
-      - label: "Heading"
-        name: "heading"
+      - label: "Title"
+        name: "title"
         widget: "string"
+        default: "FAQs"
+      - label: "Headings"
+        name: "headings"
+        widget: "list"
         fields:
-          - label: "Question"
-            name: "question"
-            widget: "object"
+          - label: "Heading"
+            name: "heading"
+            widget: "string"
+          - label: "Questions"
+            name: "questions"
+            widget: "list"
             fields:
-              - label: "Question text"
-                name: "questionText"
-                widget: "string"
-              - label: "Response"
-                name: "response"
-                widget: "markdown"
-                buttons: ["bold", "link", "bulleted-list", "numbered-list"]
+              - label: "Question"
+                name: "question"
+                widget: "object"
+                fields:
+                  - label: "Question text"
+                    name: "questionText"
+                    widget: "string"
+                  - label: "Response"
+                    name: "response"
+                    widget: "markdown"
+                    buttons: ["bold", "link", "bulleted-list", "numbered-list"]
