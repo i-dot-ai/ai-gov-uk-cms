@@ -8,12 +8,72 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js" integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
 
-      var Preview = createClass({
+      const convertDate = (dateStr) => {
+          const months = [
+              "January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"
+          ];
+          const suffixes = ["th", "st", "nd", "rd"];
+          function getDaySuffix(day) {
+              if (day > 3 && day < 21) return "th"; // Covers 11th, 12th, 13th
+              switch (day % 10) {
+                  case 1: return suffixes[1];
+                  case 2: return suffixes[2];
+                  case 3: return suffixes[3];
+                  default: return suffixes[0];
+              }
+          }
+          const [year, month, day] = dateStr.split('-');
+          if (!year || !month || !day) {
+              return "";
+          }
+          const dayNumber = parseInt(day, 10);
+          const monthName = months[parseInt(month, 10) - 1];
+          const daySuffix = getDaySuffix(dayNumber);
+          return `${dayNumber}${daySuffix} ${monthName} ${year}`;
+      };
+
+      const convertBlobToBase64 = (blob) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      };
+
+
+      let converter = new showdown.Converter();
+
+
+      const Preview = createClass({
+        componentDidUpdate: async function() {
+          const entry = this.props.entry;
+          const data = entry.getIn(['data']).toJS();
+          data.date = convertDate(data.date);
+          if (data.leadImage) {
+            const img = document.querySelector('img[role="presentation"]');
+            const response = await fetch(img.src);
+            const blob = await response.blob();
+            const base64 = await convertBlobToBase64(blob);
+            data.leadImage = base64;
+          }
+          data.components.forEach((component) => {
+            if (component.type === "bodyText") {
+              component.content = converter.makeHtml(component.content);
+            }
+          });
+          this.iframe.contentWindow.postMessage(data, '*');
+        },
         render: function() {
           return h('div', {},
-            h('iframe', {src: "https://ai.gov.uk/blogs/welcome-to-the-i-ai-blog/?preview=true"})
+            h('iframe', {
+              src: "https://ai.gov.uk/blogs/welcome-to-the-i-ai-blog/?preview=true",
+              ref: (iframe) => { this.iframe = iframe; }
+            })
           );
         }
       });
