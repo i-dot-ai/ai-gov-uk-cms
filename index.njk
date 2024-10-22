@@ -61,7 +61,7 @@
             const base64 = await convertBlobToBase64(blob);
             data.leadImage = base64;
           }
-          data.components.forEach((component) => {
+          data.components?.forEach((component) => {
             if (component.type === "bodyText") {
               component.content = converter.makeHtml(component.content);
             }
