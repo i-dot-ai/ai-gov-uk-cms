@@ -2,7 +2,7 @@
   permalink: "/config.yml"
 ---
 backend:
-  name: github
+  name: {% if envs.runMode == "serve" %}test-repo{% else %}github{% endif %}
   repo: i-dot-ai/ai-gov-uk-cms-content
   use_graphql: true
   squash_merges: true
@@ -82,6 +82,7 @@ collections:
         - label: "Body Text Component"
           name: "bodyText"
           widget: "object"
+          hint: "<!-- comments can be added like this -->"
           fields:
             - label: "Content"
               name: "content"

@@ -4,7 +4,7 @@
   "description": "Content Management System for ai.gov.uk website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npx @11ty/eleventy --serve"
   },
   "author": "",
   "devDependencies": {
