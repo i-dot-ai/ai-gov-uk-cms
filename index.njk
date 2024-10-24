@@ -53,7 +53,9 @@
         componentDidUpdate: async function() {
           const entry = this.props.entry;
           const data = entry.getIn(['data']).toJS();
-          data.date = convertDate(data.date);
+          if (data.date) {
+            data.date = convertDate(data.date);
+          }
           if (data.leadImage) {
             const img = document.querySelector('img[role="presentation"]');
             const response = await fetch(img.src);
@@ -62,16 +64,22 @@
             data.leadImage = base64;
           }
           data.components?.forEach((component) => {
-            if (component.type === "bodyText") {
+            if (component.type === "bodyText" || component.type === "doubleColumn") {
               component.content = converter.makeHtml(component.content);
             }
           });
           this.iframe.contentWindow.postMessage(data, '*');
         },
         render: function() {
+          let previewUrl = "";
+          if (window.location.hash.includes("collections/blogs")) {
+            previewUrl = "https://ai.gov.uk/blogs/welcome-to-the-i-ai-blog/?preview=true"; // TO DO: This is going to be moved to https://ai.gov.uk/blogs/preview
+          } else if (window.location.hash.includes("collections/projects")) {
+            previewUrl = "https://ai.gov.uk/projects/preview";
+          }
           return h('div', {},
             h('iframe', {
-              src: "https://ai.gov.uk/blogs/welcome-to-the-i-ai-blog/?preview=true",
+              src: previewUrl,
               ref: (iframe) => { this.iframe = iframe; }
             })
           );
@@ -79,6 +87,7 @@
       });
 
       CMS.registerPreviewTemplate("blogs", Preview);
+      CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
