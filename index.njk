@@ -115,6 +115,24 @@
         }
       `, { raw: true });
 
+      CMS.registerEditorComponent({
+        id: "comment",
+        label: "Comment",
+        fields: [{name: "comment", label: "Comment", widget: "string"}],
+        pattern: /^<!--[\s\S]*?-->$/ms,
+        fromBlock: function(match) {
+          return {
+            comment: match[1]
+          }
+        },
+        toBlock: function(data) {
+          return "";
+        },
+        toPreview: function (data) {
+          return "";
+        }
+      });
+
     </script>
   </body>
 </html>
