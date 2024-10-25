@@ -149,7 +149,6 @@ collections:
       - label: "Summary (project page)"
         name: "summaryProjectPage"
         widget: "text"
-        required: false
         hint: "A summary to be shown in the header (can be same as above summary or slightly longer)"
       - label: "Lead Image"
         name: "leadImage"
@@ -169,11 +168,15 @@ collections:
               name: "content"
               widget: "markdown"
               buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"]
+              editor_components: ["code-block"]
             - label: "Image"
               name: "image"
               widget: "image"
               allow_multiple: false
               choose_url: false
+            - label: "Image alt text"
+              name: "imageAlt"
+              widget: "text"
             - label: "Order"
               name: "order"
               widget: "select"

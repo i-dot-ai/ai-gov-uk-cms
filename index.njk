@@ -36,15 +36,29 @@
           return `${dayNumber}${daySuffix} ${monthName} ${year}`;
       };
 
-      const convertBlobToBase64 = (blob) => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
-        });
-      };
 
+      const getImage = async (imageIndex) => {
+
+        const convertBlobToBase64 = (blob) => {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+          });
+        };
+
+        const allImages = document.querySelectorAll('img[role="presentation"]');
+        if (allImages.length < imageIndex + 1) {
+          return "";
+        }
+        const img = allImages[imageIndex];
+        const response = await fetch(img.src);
+        const blob = await response.blob();
+        const base64 = await convertBlobToBase64(blob);
+        return base64;
+      };
+    
 
       let converter = new showdown.Converter();
 
@@ -53,21 +67,27 @@
         componentDidUpdate: async function() {
           const entry = this.props.entry;
           const data = entry.getIn(['data']).toJS();
+          let imageCount = 0;
           if (data.date) {
             data.date = convertDate(data.date);
           }
           if (data.leadImage) {
-            const img = document.querySelector('img[role="presentation"]');
-            const response = await fetch(img.src);
-            const blob = await response.blob();
-            const base64 = await convertBlobToBase64(blob);
-            data.leadImage = base64;
+            data.leadImage = await getImage(imageCount);
+            if (data.leadImage) {
+              imageCount++;
+            }
           }
-          data.components?.forEach((component) => {
+          for (let component of data.components || []) {
             if (component.type === "bodyText" || component.type === "doubleColumn") {
               component.content = converter.makeHtml(component.content);
             }
-          });
+            if (component.type === "doubleColumn") {
+              component.image = await getImage(imageCount);
+              if (component.image) {
+                imageCount++;
+              }
+            }
+          }
           this.iframe.contentWindow.postMessage(data, '*');
         },
         render: function() {
