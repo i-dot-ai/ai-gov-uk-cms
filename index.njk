@@ -118,11 +118,11 @@
       CMS.registerEditorComponent({
         id: "comment",
         label: "Comment",
-        fields: [{name: "comment", label: "Comment", widget: "string"}],
-        pattern: /^<!--[\s\S]*?-->$/ms,
+        fields: [{name: "comment", label: "Comment", widget: "text"}],
+        pattern: /^<!--\s*([\s\S]*?)\s*-->$/m,
         fromBlock: function(match) {
           return {
-            comment: match[0]
+            comment: match[1]
           }
         },
         toBlock: function(data) {
