@@ -122,7 +122,7 @@
         pattern: /^<!--[\s\S]*?-->$/ms,
         fromBlock: function(match) {
           return {
-            comment: match[1]
+            comment: match[0]
           }
         },
         toBlock: function(data) {
