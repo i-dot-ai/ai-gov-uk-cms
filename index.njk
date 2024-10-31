@@ -60,7 +60,9 @@
       };
     
 
-      let converter = new showdown.Converter();
+      let converter = new showdown.Converter({
+        sanitize: false
+      });
 
 
       const Preview = createClass({
@@ -79,7 +81,7 @@
           }
           for (let component of data.components || []) {
             if (component.type === "bodyText" || component.type === "doubleColumn") {
-              component.content = converter.makeHtml(component.content);
+              component.content = converter.makeHtml( component.content?.replace(/<!--[\s\S]*?-->/g, '') );
             }
             if (component.type === "doubleColumn") {
               component.image = await getImage(imageCount);
@@ -93,9 +95,9 @@
         render: function() {
           let previewUrl = "";
           if (window.location.hash.includes("collections/blogs")) {
-            previewUrl = "https://ai.gov.uk/blogs/welcome-to-the-i-ai-blog/?preview=true"; // TO DO: This is going to be moved to https://ai.gov.uk/blogs/preview
+            previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
-            previewUrl = "https://ai.gov.uk/projects/preview";
+            previewUrl = "http://localhost:8081/projects/preview";
           }
           return h('div', {},
             h('iframe', {
@@ -115,24 +117,10 @@
         }
       `, { raw: true });
 
-      CMS.registerEditorComponent({
-        id: "comment",
-        label: "Comment",
-        fields: [{name: "comment", label: "Comment", widget: "text"}],
-        pattern: /^<!--\s*([\s\S]*?)\s*-->$/m,
-        fromBlock: function(match) {
-          return {
-            comment: match[1]
-          }
-        },
-        toBlock: function(data) {
-          return `<!-- ${data.comment} -->`;
-        },
-        toPreview: function (data) {
-          return `<!-- ${data.comment} -->`;
-        }
-      });
-
     </script>
+
+    <script src="/components/comments.js"></script>
+    <script src="/components/video.js"></script>
+
   </body>
 </html>
