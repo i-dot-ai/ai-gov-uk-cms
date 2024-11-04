@@ -90,7 +90,11 @@
               }
             }
           }
-          this.iframe.contentWindow.postMessage(data, '*');
+          this.iframe.contentWindow.postMessage(data, "*");
+          // in case this is sent before the the preview has loaded
+          this.iframe.addEventListener("load", () => {
+            this.iframe.contentWindow.postMessage(data, "*")
+          });
         },
         render: function() {
           let previewUrl = "";
