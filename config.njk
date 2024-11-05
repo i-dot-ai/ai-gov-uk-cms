@@ -191,4 +191,34 @@ collections:
               widget: "select"
               options: ["Text (left) - Image (right)", "Image (left) - Text (right)"]
               default: "Text (left) - Image (right)"
-  
+
+  - label: "Jobs"
+    name: "jobs"
+    folder: "content/jobs"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Grade"
+        name: "grade"
+        widget: "string"
+        required: false
+      - label: "Salary"
+        name: "salary"
+        widget: "string"
+        required: false
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: false
+      - label: "Link"
+        name: "link"
+        widget: "string"
+        hint: "Link to the Civil Service Jobs page"
+      - label: "Headline"
+        name: "headline"
+        widget: "text"
+        required: false
+        pattern: ['^.{0,1000}$', "1000 characters max"]
