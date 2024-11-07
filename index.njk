@@ -82,6 +82,18 @@
           for (let component of data.components || []) {
             if (component.type === "bodyText" || component.type === "doubleColumn") {
               component.content = converter.makeHtml( component.content?.replace(/<!--[\s\S]*?-->/g, '') );
+              
+              // convert any inline images
+              const matches = component.content.match(/<img src="[^"]*"/g);
+              for (const match of matches) {
+                const oldUrl = match
+                  .replace('<img src="', "")
+                  .replace('"', "");
+                const newUrl = await getImage(imageCount);
+                imageCount ++;
+                component.content = component.content.replace(oldUrl, newUrl);
+              }
+
             }
             if (component.type === "doubleColumn") {
               component.image = await getImage(imageCount);
