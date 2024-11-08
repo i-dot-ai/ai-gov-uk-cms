@@ -27,7 +27,7 @@ module.exports = (eleventyConfig) => {
 
         // create ./_site/assets folder if it doesn't already exist
         if (!fs.existsSync(ASSETS_FOLDER)) {
-            fs.mkdirSync(ASSETS_FOLDER);
+            fs.mkdirSync(ASSETS_FOLDER, { recursive: true });
         }
 
         // loop through each asset, and copy over if it doesn't already exist
