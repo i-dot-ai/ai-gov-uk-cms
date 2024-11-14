@@ -8,7 +8,12 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js" integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"
+      integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
 
       const convertDate = (dateStr) => {
@@ -58,7 +63,7 @@
         const base64 = await convertBlobToBase64(blob);
         return base64;
       };
-    
+
 
       let converter = new showdown.Converter({
         sanitize: false
@@ -82,7 +87,7 @@
           for (let component of data.components || []) {
             if (component.type === "bodyText" || component.type === "doubleColumn") {
               component.content = converter.makeHtml( component.content?.replace(/<!--[\s\S]*?-->/g, '') );
-              
+
               // convert any inline images
               const matches = component.content.match(/<img src="[^"]*"/g);
               for (const match of matches) {
@@ -133,10 +138,20 @@
         }
       `, { raw: true });
 
+      {% if envs.buildHook %}
+        CMS.registerEventListener({
+          name: "prePublish",
+          handler: () => {
+            // Trigger Netlify build hook
+            fetch("{{ envs.buildHook }}", {
+              method: "POST"
+            });
+          }
+        });
+      {% endif %}
     </script>
 
     <script src="/components/comments.js"></script>
     <script src="/components/video.js"></script>
-
   </body>
 </html>
