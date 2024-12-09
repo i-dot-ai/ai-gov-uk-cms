@@ -106,6 +106,30 @@ collections:
         widget: "list"
         types:
         {{ standardComponents() }}
+        - label: "Infographic"
+          name: "infographic"
+          widget: "object"
+          fields:
+            - label: "Type"
+              name: "infographicType"
+              widget: "select"
+              options: ["First 12 months"]
+              default: "First 12 months"
+        - label: "Carousel"
+          name: "carousel"
+          widget: "object"
+          fields:
+            - label: "Carousel title"
+              name: "carouselTitle"
+              widget: "string"
+            - label: "Items"
+              name: "carouselItems"
+              widget: "list"
+              fields:
+                - label: "Content"
+                  name: "carouselContent"
+                  widget: "markdown"
+                  hint: "Only the last item is shown in preview (for now)"
   
   - label: "FAQs"
     name: "faqs"
