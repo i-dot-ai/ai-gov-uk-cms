@@ -90,13 +90,15 @@
 
               // convert any inline images
               const matches = component.content.match(/<img src="[^"]*"/g);
-              for (const match of matches) {
-                const oldUrl = match
-                  .replace('<img src="', "")
-                  .replace('"', "");
-                const newUrl = await getImage(imageCount);
-                imageCount ++;
-                component.content = component.content.replace(oldUrl, newUrl);
+              if (matches) {
+                for (const match of matches) {
+                  const oldUrl = match
+                    .replace('<img src="', "")
+                    .replace('"', "");
+                  const newUrl = await getImage(imageCount);
+                  imageCount ++;
+                  component.content = component.content.replace(oldUrl, newUrl);
+                }
               }
 
             }
@@ -105,6 +107,10 @@
               if (component.image) {
                 imageCount++;
               }
+            }
+            if (component.type === "carousel") {
+              const items = component.carouselItems?.length ? component.carouselItems.map((item) => item.carouselContent) : [];
+              component.carouselItems = JSON.stringify(items).replace(/"/g, '&quot;');
             }
           }
           this.iframe.contentWindow.postMessage(data, "*");
