@@ -103,6 +103,8 @@
 
             }
             if (component.type === "doubleColumn") {
+              component.content = converter.makeHtml( component.content?.replace(/<!--[\s\S]*?-->/g, '') );
+              component.content = component.content.replace(/"/g, "&quot;");
               component.image = await getImage(imageCount);
               if (component.image) {
                 imageCount++;
@@ -124,7 +126,7 @@
           if (window.location.hash.includes("collections/blogs")) {
             previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
-            previewUrl = "https://ai.gov.uk/projects/preview";
+            previewUrl = "http://localhost:8080/projects/preview";
           }
           return h('div', {},
             h('iframe', {
