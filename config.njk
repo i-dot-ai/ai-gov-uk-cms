@@ -196,6 +196,11 @@ collections:
           name: "doubleColumn"
           widget: "object"
           fields:
+            - label: "Order"
+              name: "order"
+              widget: "select"
+              options: ["Text (left) - Image (right)", "Image (left) - Text (right)"]
+              default: "Text (left) - Image (right)"
             - label: "Content"
               name: "content"
               widget: "markdown"
@@ -210,11 +215,10 @@ collections:
               name: "imageAlt"
               widget: "text"
               required: false
-            - label: "Order"
-              name: "order"
-              widget: "select"
-              options: ["Text (left) - Image (right)", "Image (left) - Text (right)"]
-              default: "Text (left) - Image (right)"
+            - label: "Image caption"
+              name: "imageCaption"
+              widget: "text"
+              required: false
 
   - label: "Jobs"
     name: "jobs"
