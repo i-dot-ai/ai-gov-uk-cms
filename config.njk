@@ -3,7 +3,7 @@
 ---
 
 {% macro standardComponents() %}
-        - label: "Body Text Component"
+        - label: "Text Component"
           name: "bodyText"
           widget: "object"
           hint: "<!-- comments can be added like this -->"
@@ -194,6 +194,23 @@ collections:
         widget: "image"
         allow_multiple: false
         hint: "For hub page and social media (not shown on actual page)"
+      - label: "Register your interest"
+        name: "registerInterest"
+        widget: "object"
+        hint: "This information shows on the Register Your Interest page"
+        fields:
+          - label: "Current availability"
+            name: "currentAvailability"
+            widget: "markdown"
+            required: false
+          - label: "Where to apply"
+            name: "whereToApply"
+            widget: "markdown"
+            required: false
+          - label: "Github link"
+            name: "githubLink"
+            widget: "string"
+            required: false
       - label: "Components"
         name: "components"
         widget: "list"
