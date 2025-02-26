@@ -287,3 +287,32 @@ collections:
         widget: "text"
         required: false
         pattern: ['^.{0,1000}$', "1000 characters max"]
+
+  - label: "Press mentions"
+    name: "press"
+    folder: "content/press"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Headline"
+        name: "headline"
+        widget: "string"
+      - label: "Link"
+        name: "link"
+        widget: "string"
+      - label: "Logo"
+        name: "logo"
+        widget: "image"
+        allow_multiple: false
+        choose_url: false
+        hint: "The media outlet logo"
+      - label: "Date of publication"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        default: "{{now}}"
+      - label: "Summary"
+        name: "summary"
+        widget: "text"
+      
+      
