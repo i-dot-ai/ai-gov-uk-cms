@@ -300,12 +300,6 @@ collections:
       - label: "Link"
         name: "link"
         widget: "string"
-      - label: "Logo"
-        name: "logo"
-        widget: "image"
-        allow_multiple: false
-        choose_url: false
-        hint: "The media outlet logo"
       - label: "Date of publication"
         name: "date"
         widget: "datetime"
@@ -314,5 +308,14 @@ collections:
       - label: "Summary"
         name: "summary"
         widget: "text"
-      
+      - label: "Media outlet"
+        name: "media"
+        widget: "string"
+        hint: "The name of the media outlet (used as alt-text for the logo)"
+      - label: "Logo"
+        name: "logo"
+        widget: "image"
+        allow_multiple: false
+        choose_url: false
+        hint: "The media outlet logo"
       
