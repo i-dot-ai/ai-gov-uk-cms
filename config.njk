@@ -318,4 +318,45 @@ collections:
         allow_multiple: false
         choose_url: false
         hint: "The media outlet logo"
-      
+
+  - label: "Knowledge Hub: Use cases"
+    name: "knowledge_hub_use_cases"
+    folder: "content/knowledge_hub/use_cases"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Organisation"
+        name: "organisation"
+        widget: "string"
+        required: false
+      - label: "Phase"
+        name: "phase"
+        widget: "string"
+        required: false
+      - label: "Challenge"
+        name: "challenge"
+        widget: "text"
+        required: false
+      - label: "Solution"
+        name: "solution"
+        widget: "text"
+        required: false
+      - label: "Results"
+        name: "results"
+        widget: "text"
+        required: false
+      - label: "Links"
+        name: "links"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Link text"
+            name: "text"
+            widget: "string"
+          - label: "URL"
+            name: "url"
+            widget: "string"
+  
