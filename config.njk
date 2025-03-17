@@ -328,9 +328,44 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
-      - label: "Organisation"
+      - label: "Organisation Name"
         name: "organisation"
         widget: "string"
+        required: false
+      - label: "Organisation Type"
+        name: "organisationType"
+        widget: "select"
+        options: ["UK Government", "International Government", "Industry"]
+        required: false
+      - label: "User Group"
+        name: "userGroup"
+        widget: "select"
+        options: ["Public Sector", "Industry", "Citizens"]
+        required: false
+      - label: "Use Case Type"
+        name: "useCaseType"
+        widget: "select"
+        options: ["Specific", "Reusable"]
+        required: false
+      - label: "Application Area"
+        name: "applicationArea"
+        widget: "select"
+        options: ["Transcription and Translation", "Assessment Streamlining", "Business Planning", "Process Automation", "Chatbot"]
+        required: false
+      - label: "Application Focus"
+        name: "applicationFocus"
+        widget: "select"
+        options: ["Transcription", "Knowledge Assistant", "Administrative Assistant", "Personalisation", "Assess and Diagnose", "Fraud and Error", "Document Drafting", "Media Generation", "Automated Codification", "Citizen-facing chatbot", "Monitor and Detect", "Data", "Infrastructure"]
+        required: false
+      - label: "Type of Technology"
+        name: "typeOfTechnology"
+        widget: "select"
+        options: ["Generative AI", "Machine Learning", "Data & Infrastructure", "Other"]
+        required: false
+      - label: "Capability"
+        name: "capability"
+        widget: "select"
+        options: ["LLM", "Recommendation System", "Anomaly Detection", "Classification", "Computer Vision", "Natural Language Processing", "Forecasting", "Optimisation", "Segmentation"]
         required: false
       - label: "Phase"
         name: "phase"
