@@ -345,7 +345,7 @@ collections:
       - label: "Impact"
         name: "impact"
         widget: "select"
-        options: ["Increased productivity", "Reduced cost", "Improved public service delivery"]
+        options: ["Cost Savings", "Time Savings", "Improved Efficiency", "Better Customer Experience"]
         required: false
       - label: "Use Case Type"
         name: "useCaseType"
@@ -367,11 +367,6 @@ collections:
         widget: "select"
         options: ["Generative AI", "Machine Learning", "Data & Infrastructure", "Other"]
         required: false
-      - label: "Capability"
-        name: "capability"
-        widget: "select"
-        options: ["LLM", "Recommendation System", "Anomaly Detection", "Classification", "Computer Vision", "Natural Language Processing", "Forecasting", "Optimisation", "Segmentation"]
-        required: false
       - label: "Phase"
         name: "phase"
         widget: "select"
@@ -387,6 +382,10 @@ collections:
         required: false
       - label: "Results"
         name: "results"
+        widget: "text"
+        required: false
+      - label: "Learnings / Insights"
+        name: "learnings"
         widget: "text"
         required: false
       - label: "Links"
