@@ -65,6 +65,8 @@ collections:
       - label: "Technical blog"
         name: "technicalBlog"
         widget: "boolean"
+        default: false
+        required: false
       - label: "Date"
         name: "date"
         widget: "datetime"
@@ -328,6 +330,15 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Created"
+        name: "created"
+        widget: "hidden"
+        default: "{{now}}"
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        required: false
       - label: "Organisation Name"
         name: "organisation"
         widget: "string"
@@ -335,58 +346,48 @@ collections:
       - label: "Organisation Type"
         name: "organisationType"
         widget: "select"
-        options: ["UK Government", "International Government", "Industry"]
+        options: ["Central", "Local", "Welsh", "Scottish", "Northern Ireland", "International"]
         required: false
       - label: "User Group"
         name: "userGroup"
         widget: "select"
-        options: ["Civil Service", "Wider Public Sector", "Industry", "Citizens"]
-        required: false
-      - label: "Impact"
-        name: "impact"
-        widget: "select"
-        options: ["Cost Savings", "Time Savings", "Improved Efficiency", "Better Customer Experience"]
+        options: ["Civil Servants", "Wider Public Sector", "General Public"]
         required: false
       - label: "Use Case Type"
         name: "useCaseType"
         widget: "select"
         options: ["Specific", "Reusable"]
         required: false
-      - label: "Application Area"
-        name: "applicationArea"
-        widget: "select"
-        options: ["Transcription and Translation", "Assessment Streamlining", "Business Planning", "Process Automation", "Chatbot"]
-        required: false
-      - label: "Application Focus"
-        name: "applicationFocus"
-        widget: "select"
-        options: ["Transcription", "Knowledge Assistant", "Administrative Assistant", "Personalisation", "Assess and Diagnose", "Fraud and Error", "Document Drafting", "Media Generation", "Automated Codification", "Citizen-facing chatbot", "Monitor and Detect", "Data", "Infrastructure"]
-        required: false
       - label: "Type of Technology"
         name: "typeOfTechnology"
         widget: "select"
-        options: ["Generative AI", "Machine Learning", "Data & Infrastructure", "Other"]
+        options: ["Generative AI", "Machine Learning", "Data or Infrastructure", "Other"]
+        required: false
+      - label: "Impact"
+        name: "impact"
+        widget: "select"
+        options: ["Cost Savings", "Time Savings", "Improved Efficiency", "Better Customer Experience"]
         required: false
       - label: "Phase"
         name: "phase"
         widget: "select"
-        options: ["Alpha", "Beta", "Scale"]
+        options: ["Discovery", "Alpha", "Beta", "Live", "Retirement"]
         required: false
       - label: "Challenge"
         name: "challenge"
-        widget: "text"
+        widget: "markdown"
         required: false
       - label: "Solution"
         name: "solution"
-        widget: "text"
+        widget: "markdown"
         required: false
       - label: "Results"
         name: "results"
-        widget: "text"
+        widget: "markdown"
         required: false
       - label: "Learnings / Insights"
         name: "learnings"
-        widget: "text"
+        widget: "markdown"
         required: false
       - label: "Links"
         name: "links"
