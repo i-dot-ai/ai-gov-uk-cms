@@ -326,6 +326,7 @@ collections:
     folder: "content/knowledge_hub/use_cases"
     create: true
     slug: "{{title}}"
+    summary: "{{title}} \n {{synopsis}}"
     fields: 
       - label: "Title"
         name: "title"
@@ -349,6 +350,7 @@ collections:
         name: "organisation"
         widget: "string"
         required: false
+        hint: "Use / if more than one organisation"
       - label: "Organisation Type"
         name: "organisationType"
         widget: "select"
