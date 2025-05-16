@@ -115,11 +115,20 @@
               component.carouselItems = JSON.stringify(items).replace(/"/g, '&quot;');
             }
           }
+
+          if (data.content) {
+            data.content = converter.makeHtml(data.content);
+            data.content = data.content
+              .replaceAll('<h2', '<h2 class="govuk-heading-m"')
+              .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+          }
+
           this.iframe.contentWindow.postMessage(data, "*");
           // in case this is sent before the the preview has loaded
           this.iframe.addEventListener("load", () => {
             this.iframe.contentWindow.postMessage(data, "*")
           });
+
         },
         render: function() {
           let previewUrl = "";
@@ -127,6 +136,8 @@
             previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
             previewUrl = "https://ai.gov.uk/projects/preview";
+          } else if (window.location.hash.includes("collections/Pages/entries/knowledge_hub_guidance")) {
+            previewUrl = "https://ai-knowledge-hub-demo.netlify.app/knowledge-hub/guidance/";
           }
           return h('div', {},
             h('iframe', {
@@ -139,6 +150,7 @@
 
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_guidance", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
