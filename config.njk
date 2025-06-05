@@ -413,6 +413,26 @@ collections:
             name: "url"
             widget: "string"
 
+  - label: "Knowledge Hub: Prompts"
+    name: "knowledge_hub_prompts"
+    folder: "content/knowledge_hub/prompts"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Tags"
+        name: "tags"
+        widget: "string"
+        hint: "Use a comma to separate multiple tags"
+      - label: "Prompt"
+        name: "prompt"
+        widget: "markdown"
+
   - label: "Pages"
     name: "Pages"
     files:
