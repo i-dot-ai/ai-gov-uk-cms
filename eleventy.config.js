@@ -40,7 +40,6 @@ module.exports = (eleventyConfig) => {
       );
       if (!fs.existsSync(localFilePath)) {
 
-        const writer = fs.createWriteStream(localFilePath);
         const response = await axios({
           url: asset.download_url,
           method: "GET",
@@ -50,7 +49,15 @@ module.exports = (eleventyConfig) => {
             "X-GitHub-Api-Version": "2022-11-28",
           },
         });
+
+        const writer = fs.createWriteStream(localFilePath);
+        const finished = new Promise((resolve, reject) => {
+          writer.on('finish', resolve);
+          writer.on('error', reject);
+        });
         response.data.pipe(writer);
+        await finished; 
+
       }
 
       // RESIZE LARGE IMAGES
