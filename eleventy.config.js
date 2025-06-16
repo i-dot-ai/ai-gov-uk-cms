@@ -2,6 +2,7 @@ require("dotenv").config();
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
+const sharp = require('sharp');
 
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 const ASSETS_FOLDER = "./_site/assets";
@@ -37,21 +38,54 @@ module.exports = (eleventyConfig) => {
         __dirname,
         `${ASSETS_FOLDER}/${asset.name}`
       );
-      if (fs.existsSync(localFilePath)) {
-        return;
+      if (!fs.existsSync(localFilePath)) {
+
+        const writer = fs.createWriteStream(localFilePath);
+        const response = await axios({
+          url: asset.download_url,
+          method: "GET",
+          responseType: "stream",
+          headers: {
+            Authorization: `token ${process.env.CMS_CONTENT_REPO_TOKEN}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        });
+        response.data.pipe(writer);
       }
 
-      const writer = fs.createWriteStream(localFilePath);
-      const response = await axios({
-        url: asset.download_url,
-        method: "GET",
-        responseType: "stream",
-        headers: {
-          Authorization: `token ${process.env.CMS_CONTENT_REPO_TOKEN}`,
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-      });
-      response.data.pipe(writer);
+      // RESIZE LARGE IMAGES
+      const MAX_IMAGE_WIDTH = 2200; // based on 2 x container width
+      const ACCEPTED_FORMATS = ['.jpg', '.jpeg', '.png', '.webp'];
+      if (ACCEPTED_FORMATS.some(ext => asset.name.endsWith(ext))) {
+
+        const filePath = `.${(localFilePath.match(/\/_site\/.*$/) || [])[0]}`;
+
+        console.log('Optimising image: ', localFilePath);
+        fs.rename(filePath, `${filePath}.bak`, async (err) => {
+          
+          // resize and save to original file
+          await sharp(`${filePath}.bak`)
+          .resize(MAX_IMAGE_WIDTH, null, {
+            withoutEnlargement: true 
+          })
+          .toFile(filePath);
+
+          // resize and save to webp
+          await sharp(`${filePath}.bak`)
+          .resize(MAX_IMAGE_WIDTH, null, {
+            withoutEnlargement: true 
+          })
+          .toFormat('webp')
+          .toFile(`${filePath}.webp`);
+
+          // delete original
+          fs.unlink(`${filePath}.bak`, (cb) => {});
+
+        });
+
+      }
+
     }
+
   });
 };
