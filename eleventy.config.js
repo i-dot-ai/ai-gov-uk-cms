@@ -60,9 +60,9 @@ module.exports = (eleventyConfig) => {
 
       }
 
-      // RESIZE LARGE IMAGES
+      // OPTIMISE IMAGES
       const MAX_IMAGE_WIDTH = 2200; // based on 2 x container width
-      const ACCEPTED_FORMATS = ['.jpg', '.jpeg', '.png', '.webp'];
+      const ACCEPTED_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
       if (ACCEPTED_FORMATS.some(ext => asset.name.endsWith(ext))) {
 
         const filePath = `.${(localFilePath.match(/\/_site\/.*$/) || [])[0]}`;
