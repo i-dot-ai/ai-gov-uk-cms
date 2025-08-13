@@ -188,12 +188,6 @@ collections:
         widget: "select"
         options: ["Paused", "Incubation", "Alpha", "Beta", "Scaling", "N/A"]
         default: "Incubation"
-      - label: "Type"
-        name: "type"
-        widget: "select"
-        options: ["Productivity tools", "Other"]
-        default: "Other"
-        hint: "This determines which section it appears in on the projects page"
       - label: "Summary (hub page)"
         name: "summaryHubPage"
         widget: "string"
@@ -203,6 +197,11 @@ collections:
         name: "summaryProjectPage"
         widget: "text"
         hint: "A summary to be shown in the header (can be same as above summary or slightly longer)"
+      - label: "Key facts"
+        name: "keyFacts"
+        widget: "markdown"
+        required: false
+        hint: "This shows in a panel to the right on the project page"
       - label: "Lead Image"
         name: "leadImage"
         widget: "image"
