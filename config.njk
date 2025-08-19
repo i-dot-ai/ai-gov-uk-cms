@@ -332,11 +332,7 @@ collections:
         choose_url: false
         hint: "The media outlet logo"
 
-  - label: "Knowledge Hub: Use cases"
-    name: "knowledge_hub_use_cases"
-    folder: "content/knowledge_hub/use_cases"
-    create: true
-    slug: "{{title}}"
+  {% macro useCase() %}
     fields: 
       - label: "Title"
         name: "title"
@@ -423,6 +419,14 @@ collections:
           - label: "URL"
             name: "url"
             widget: "string"
+  {% endmacro %}
+
+  - label: "Knowledge Hub: Use cases"
+    name: "knowledge_hub_use_cases"
+    folder: "content/knowledge_hub/use_cases"
+    create: true
+    slug: "{{title}}"
+    {{ useCase() }}
 
   - label: "Knowledge Hub: Prompts"
     name: "knowledge_hub_prompts"
@@ -446,6 +450,13 @@ collections:
       - label: "Prompt"
         name: "prompt"
         widget: "markdown"
+
+  - label: "Internal KH: Use cases"
+    name: "knowledge_hub_private_use_cases"
+    folder: "content/knowledge_hub_private/use_cases"
+    create: true
+    slug: "{{title}}"
+    {{ useCase() }}
 
   - label: "Pages"
     name: "Pages"
