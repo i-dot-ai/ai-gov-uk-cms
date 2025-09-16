@@ -121,6 +121,22 @@
             data.content = data.content
               .replaceAll('<h2', '<h2 class="govuk-heading-m"')
               .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+
+
+            if (!data.components) {
+              // convert any inline images
+              const matches = data.content.match(/<img src="[^"]*"/g);
+              if (matches) {
+                for (const match of matches) {
+                  const oldUrl = match
+                    .replace('<img src="', "")
+                    .replace('"', "");
+                  const newUrl = await getImage(imageCount);
+                  imageCount ++;
+                  data.content = data.content.replace(oldUrl, newUrl);
+                }
+              }
+            }
           }
 
           this.iframe.contentWindow.postMessage(data, "*");
