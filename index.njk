@@ -137,7 +137,9 @@
           } else if (window.location.hash.includes("collections/projects")) {
             previewUrl = "https://ai.gov.uk/projects/preview";
           } else if (window.location.hash.includes("collections/Pages/entries/knowledge_hub_guidance")) {
-            previewUrl = "https://ai-knowledge-hub-demo.netlify.app/knowledge-hub/guidance/";
+            previewUrl = "https://ai.gov.uk/knowledge-hub/guidance/";
+          } else if (window.location.hash.includes("collections/evals")) {
+            previewUrl = "https://ai.gov.uk/evaluations/cms-preview";
           }
           return h('div', {},
             h('iframe', {
@@ -151,6 +153,7 @@
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance", Preview);
+      CMS.registerPreviewTemplate("evals", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
