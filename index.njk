@@ -120,6 +120,7 @@
             data.content = converter.makeHtml(data.content);
             data.content = data.content
               .replaceAll('<h2', '<h2 class="govuk-heading-m"')
+              .replaceAll('<h3', '<h3 class="govuk-heading-s"')
               .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
 
 
