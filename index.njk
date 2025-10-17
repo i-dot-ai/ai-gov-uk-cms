@@ -137,6 +137,12 @@
                 }
               }
             }
+
+            if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_playbook')) {
+              data.title = 'Playbook';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_guidance_dev_v')) {
+              data.title = 'Using AI Assistants';
+            }
           }
 
           this.iframe.contentWindow.postMessage(data, "*");
@@ -152,7 +158,9 @@
             previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
             previewUrl = "https://ai.gov.uk/projects/preview";
-          } else if (window.location.hash.includes("collections/Pages/entries/knowledge_hub_guidance")) {
+          } else if (
+            window.location.hash.includes("collections/Pages/entries/knowledge_hub_guidance") || 
+            window.location.hash.includes("collections/Pages/entries/knowledge_hub_playbook")) {
             previewUrl = "https://ai.gov.uk/knowledge-hub/guidance/";
           } else if (window.location.hash.includes("collections/evals")) {
             previewUrl = "https://ai.gov.uk/evaluations/cms-preview";
@@ -169,6 +177,9 @@
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_a", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_b", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_playbook", Preview);
       CMS.registerPreviewTemplate("evals", Preview);
       CMS.registerPreviewStyle(`
         iframe {
