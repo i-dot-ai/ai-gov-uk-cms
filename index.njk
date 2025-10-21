@@ -216,6 +216,49 @@
           return entry.get("data").set("updated", Date.now().toString())
         }
       });
+      // Handle JSON import processing
+      CMS.registerEventListener({
+        name: "preSave",
+        handler: ({ entry }) => {
+          
+          const data = entry.get("data");
+          const jsonImportData = data.get("jsonImportData");
+          const collection = entry.get("collection");
+          
+          if (collection === "knowledge_hub_use_cases" || collection === "knowledge_hub_private_use_cases" && jsonImportData) {
+            console.log("Processing JSON import for usecase");
+            
+            try {
+              const jsonData = JSON.parse(jsonImportData);
+              
+              // make a copy of data to update so if something fails we can return original
+              let updatedData = data;
+
+              const fields = [
+                "title", "synopsis", "organisation", "draft", "governmentBody", "userGroup",
+                "useCaseType", "typeOfTechnology", "phase", "impact", "challenge", "solution",
+                "results", "learnings", "links"
+              ];
+
+              fields.forEach(field => {
+                if (jsonData[field] !== undefined) {
+                  updatedData = updatedData.set(field, jsonData[field]);
+                }
+              });
+
+              updateData = updatedData.delete("jsonImportData");
+
+              return updatedData;
+            } catch (error) {
+              console.error("Error processing JSON import:", error);
+              // Don't prevent saving, just log the error
+              return data;
+            }
+          }
+          
+          return data;
+        }
+      });
 
     </script>
 
@@ -228,5 +271,6 @@
     {% include "./components/comments.njk" %}
     #}
 
+    <script src="/components/file-upload-widget.js"></script>
   </body>
 </html>
