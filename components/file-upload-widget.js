@@ -1,4 +1,3 @@
-// File Upload Widget - Stores JSON data for preSave processing
 CMS.registerWidget({
   name: "file_upload_json",
   controlComponent: createClass({
