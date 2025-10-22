@@ -342,9 +342,16 @@ collections:
 
   {% macro useCase() %}
     fields: 
+      - label: "Import JSON Data"
+        name: "jsonImportData"
+        widget: "file_upload_json"
+        required: false
+        hint: "Upload a JSON file to automatically populate all fields when you save"
       - label: "Title"
         name: "title"
         widget: "string"
+        required: false
+        hint: "Required: Only optional to allow for JSON import"
       - label: "Created"
         name: "created"
         widget: "hidden"
@@ -354,7 +361,8 @@ collections:
       - label: "Synopsis"
         name: "synopsis"
         width: "text"
-        hint: "A short one line summary to show on the cards"
+        hint: "A short one line summary to show on the cards - (required, max 256 characters)"
+        required: false
       - label: "Draft"
         name: "draft"
         widget: "boolean"
