@@ -143,6 +143,8 @@
               data.title = 'Playbook';
             } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_guidance_dev_v')) {
               data.title = 'Using AI Assistants';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_guidance_dev_plan_run_v')) {
+              data.title = 'Plan and Run an AI Project';
             }
           }
 
@@ -178,6 +180,8 @@
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_plan_run_v_a", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_plan_run_v_b", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_a", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_b", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_playbook", Preview);
