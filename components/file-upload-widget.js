@@ -112,6 +112,7 @@ CMS.registerWidget({
           governmentBody: "UK Government",
           userGroup: "Civil Servants",
           useCaseType: "Specific",
+          category: "Example Category",
           typeOfTechnology: "Generative AI",
           impact: ["Time Savings", "Improved Efficiency"],
           phase: "Alpha",
