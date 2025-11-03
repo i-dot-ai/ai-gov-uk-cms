@@ -153,6 +153,14 @@
               data.title = 'Legal';
             } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_ethics')) {
               data.title = 'Ethics';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_understanding_ai')) {
+              data.title = 'Understanding AI';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_building_ai_solutions')) {
+              data.title = 'Building AI Solutions';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_security')) {
+              data.title = 'Security';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_governance')) {
+              data.title = 'Governance';
             }
           }
 
@@ -196,6 +204,10 @@
       CMS.registerPreviewTemplate("knowledge_hub_legal", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_ethics", Preview);
       CMS.registerPreviewTemplate("evals", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_understanding_ai", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_building_ai_solutions", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_security", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_governance", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
