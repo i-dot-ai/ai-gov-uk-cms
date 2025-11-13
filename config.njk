@@ -467,6 +467,11 @@ collections:
       - label: "Description"
         name: "description"
         widget: "string"
+      - label: "Hide from live site"
+        name: "hideFromLiveSite"
+        widget: "boolean"
+        default: false
+        required: false
       - label: "Category"
         name: "category"
         widget: "select"
@@ -475,8 +480,12 @@ collections:
         name: "tags"
         widget: "string"
         hint: "Use a comma to separate multiple tags"
-      - label: "Use"
+      - label: "How to use this prompt"
         name: "use"
+        widget: "markdown"
+        required: false
+      - label: "Who this prompt is for"
+        name: "who"
         widget: "markdown"
         required: false
       - label: "Prompt"
