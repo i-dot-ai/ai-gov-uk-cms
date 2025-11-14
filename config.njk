@@ -501,7 +501,41 @@ collections:
     folder: "content/knowledge_hub_private/use_cases"
     create: true
     slug: "{{title}}"
-    {{ useCase() }}
+    {{ useCase() }} 
+  - label: "Internal KH: Use case directory"
+    name: "knowledge_hub_use_case_directory"
+    folder: "content/knowledge_hub/use_case_directory"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Use case name"
+        name: "useCaseName"
+        widget: "string"
+      - label: "Sponsor"
+        name: "sponsor"
+        widget: "string"
+        required: false
+      - label: "Lead department"
+        name: "leadDepartment"
+        widget: "string"
+        required: false
+      - label: "Function"
+        name: "function"
+        widget: "string"
+        required: false
+      - label: "What it does"
+        name: "whatItDoes"
+        widget: "string"
+        required: false
+      - label: "remarks"
+        name: "remarks"
+        widget: "string"
+        required: false
+      - label: "Verified"
+        name: "verified"
+        widget: "boolean"
+        default: true
+        required: false
 
   - label: "Pages"
     name: "Pages"
