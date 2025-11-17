@@ -163,6 +163,8 @@
               data.title = 'Governance';
             } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_measure_impact')) {
               data.title = 'How to measure impact of an AI product';
+            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_experiment_with_prompts')) {
+              data.title = 'How to experiment with Prompts';
             }
           }
 
@@ -212,6 +214,7 @@
       CMS.registerPreviewTemplate("knowledge_hub_security", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_governance", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_measure_impact", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_experiment_with_prompts", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
