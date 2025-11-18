@@ -504,6 +504,18 @@ collections:
         name: "feedback"
         widget: "markdown"
         required: false
+  - label: "Knowledge Hub: Capabilities"
+    name: "knowledge_hub_capabilities"
+    folder: "content/knowledge_hub/capabilities"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "markdown"
 
   - label: "Internal KH: Use cases"
     name: "knowledge_hub_private_use_cases"
