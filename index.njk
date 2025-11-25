@@ -75,7 +75,6 @@
         componentDidUpdate: async function() {
           const entry = this.props.entry;
           const data = entry.getIn(['data']).toJS();
-          console.log(data);
           let imageCount = 0;
           if (data.date) {
             data.date = convertDate(data.date);
