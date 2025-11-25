@@ -397,6 +397,7 @@ collections:
         name: "feedback"
         widget: "markdown"
         required: false
+
   - label: "Knowledge Hub: Capabilities"
     name: "knowledge_hub_capabilities"
     folder: "content/knowledge_hub/capabilities"
@@ -432,6 +433,33 @@ collections:
         widget: "select"
         options: ["Using AI", "Building AI"]
         required: false
+
+  - label: "Internal KH: Use case directory"
+    name: "knowledge_hub_use_case_directory"
+    folder: "content/knowledge_hub/use_case_directory"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Sub function name"
+        name: "subFunctionName"
+        widget: "string"
+      - label: "description"
+        name: "description"
+        widget: "string"
+        required: false
+      - label: "Sponsor"
+        name: "sponsor"
+        widget: "string"
+        required: false
+      - label: "Function"
+        name: "function"
+        widget: "string"
+        required: false
+      - label: "Use cases"
+        name: "useCases"
+        widget: "string"
+        required: false
+        hint: "Use a comma to separate multiple tags"
 
   - label: "Pages"
     name: "Pages"
