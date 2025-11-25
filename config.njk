@@ -551,7 +551,28 @@ collections:
         required: false
         hint: "Use a comma to separate multiple tags"
 
-  
+  - label: "Knowledge Hub: Guidance pages"
+    name: "knowledge_hub_guidance_pages"
+    folder: "content/knowledge_hub/guidance_pages"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+        required: false
+        hint: "If given, this will appear on the how to landing page"
+      - label: "Content"
+        name: "content"
+        widget: "markdown"
+      - label: "Using AI or Building AI?"
+        name: "usingAiOrBuildingAi"
+        widget: "select"
+        options: ["Using AI", "Building AI"]
+        required: false
 
   - label: "Pages"
     name: "Pages"
