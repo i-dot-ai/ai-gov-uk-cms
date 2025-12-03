@@ -420,6 +420,11 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: false
+        hint: "If not given, the slug will be generated from the title."
       - label: "Description"
         name: "description"
         widget: "string"
@@ -433,6 +438,11 @@ collections:
         widget: "select"
         options: ["Using AI", "Building AI"]
         required: false
+      - label: "Draft page"
+        name: "draftPage"
+        widget: "select"
+        options: ["Yes", "Yes from playbook", "No"]
+        default: "No"
 
   - label: "Internal KH: Use case directory"
     name: "knowledge_hub_use_case_directory"
