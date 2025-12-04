@@ -151,34 +151,6 @@
                 }
               }
             }
-
-            if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_playbook')) {
-              data.title = 'Playbook';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_guidance_dev_v')) {
-              data.title = 'Using AI Assistants';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_guidance_dev_plan_run_v')) {
-              data.title = 'Plan and Run an AI Project';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_principles')) {
-              data.title = 'Principles';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_procurement')) {
-              data.title = 'Procurement';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_legal')) {
-              data.title = 'Legal';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_ethics')) {
-              data.title = 'Ethics';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_understanding_ai')) {
-              data.title = 'Understanding AI';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_building_ai_solutions')) {
-              data.title = 'Building AI Solutions';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_security')) {
-              data.title = 'Security';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_governance')) {
-              data.title = 'Governance';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_measure_impact')) {
-              data.title = 'How to measure impact of an AI product';
-            } else if (window.location.hash.includes('collections/Pages/entries/knowledge_hub_experiment_with_prompts')) {
-              data.title = 'How to experiment with Prompts';
-            }
           }
 
           this.iframe.contentWindow.postMessage(data, "*");
@@ -194,8 +166,6 @@
             previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
             previewUrl = "https://ai.gov.uk/projects/preview";
-          } else if (window.location.hash.includes("collections/Pages/entries/knowledge_hub")) {
-            previewUrl = "https://ai.gov.uk/knowledge-hub/guidance/";
           } else if (window.location.hash.includes("collections/evals")) {
             previewUrl = "https://ai.gov.uk/evaluations/cms-preview";
           } else if (window.location.hash.includes("collections/knowledge_hub_guidance_pages")) {
@@ -213,24 +183,6 @@
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance_pages", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_guidance", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_plan_run_v_a", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_plan_run_v_b", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_a", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_guidance_dev_v_b", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_playbook", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_principles", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_procurement", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_legal", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_ethics", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_ethics_building_ai", Preview);
-      CMS.registerPreviewTemplate("evals", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_understanding_ai", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_building_ai_solutions", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_security", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_governance", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_measure_impact", Preview);
-      CMS.registerPreviewTemplate("knowledge_hub_experiment_with_prompts", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
