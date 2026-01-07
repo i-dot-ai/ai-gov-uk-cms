@@ -190,6 +190,11 @@ collections:
         name: "short_description"
         widget: "string"
         hint: "A short sentence that will appear on the home page"
+      - label: "Featured"
+        name: "featured"
+        widget: boolean
+        default: false
+        hint: "If true will be shown on the homepage, there should be 2 featured projects per category"
       - label: "category"
         name: "category"
         widget: "select"
@@ -210,6 +215,7 @@ collections:
       - label: "Image"
         name: "image"
         widget: "image"
+        required: false
       - label: "Video"
         name: "video"
         widget: "object"
