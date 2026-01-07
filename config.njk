@@ -178,6 +178,105 @@ collections:
                 widget: "markdown"
                 buttons: ["bold", "link", "bulleted-list", "numbered-list"]
 
+  - label: "Projects (new website)"
+    name: "our_work_projects"
+    folder: "content/our_work_projects"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Short Description"
+        name: "short_description"
+        widget: "string"
+        hint: "A short sentence that will appear on the home page"
+      - label: "Featured"
+        name: "featured"
+        widget: boolean
+        default: false
+        hint: "If true will be shown on the homepage, there should be 2 featured projects per category"
+      - label: "category"
+        name: "category"
+        widget: "select"
+        options: ["Planning", "Education", "Government", "Frontline Services"]
+      - label: "stage"
+        name: "stage"
+        widget: "select"
+        options: ["Pilot", "Rollout", "Sunset", "Paused", "Prototype"]
+        multiple: true
+      - label: "Partner led"
+        name: "partner_led"
+        widget: boolean
+        default: false
+      - label: "Collaborator"
+        name: "collaborator"
+        widget: "string"
+        required: false
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - label: "URL"
+            name: "source"
+            widget: "string"
+          - label: "Audio Description URL"
+            name: "audioDescription"
+            widget: "string"
+            required: false
+      - label: "About"
+        name: "about"
+        widget: "markdown"
+      - label: "Latest"
+        name: "latest"
+        widget: "markdown"
+        required: false
+      - label: "Key Links"
+        name: "key_links"
+        widget: "list"
+        required: false
+        types:
+          - label: "Read More Link"
+            name: "read_more"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Link text"
+                name: "link_text"
+                widget: "string"
+              - label: "Link url"
+                name: "link_url"
+                widget: "string"
+          - label: "Open Source Link"
+            name: "open_source"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Link text"
+                name: "link_text"
+                widget: "string"
+              - label: "Link url"
+                name: "link_url"
+                widget: "string"
+          - label: "Other Link"
+            name: "other_link"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Link Label"
+                name: "link_label"
+                widget: "string"
+              - label: "Link text"
+                name: "link_text"
+                widget: "string"
+              - label: "Link url"
+                name: "link_url"
+                widget: "string"
+
   - label: "Projects"
     name: "projects"
     folder: "content/projects"
