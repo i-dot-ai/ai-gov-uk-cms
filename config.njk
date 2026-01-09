@@ -409,11 +409,14 @@ collections:
         name: "category"
         widget: "select"
         options: ["Planning", "Education", "Government", "Frontline Services"]
-      - label: "stage"
-        name: "stage"
+      - label: "Phase"
+        name: "phase"
         widget: "select"
-        options: ["Pilot", "Rollout", "Sunset", "Paused", "Prototype", "Tendor"]
-        multiple: true
+        options: ["Discovery", "Alpha", "Beta", "Scaling", "Live", "Retired"]
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options: ["Tool", "Benchmark", "Trials", "Research"]
       - label: "Partner led"
         name: "partner_led"
         widget: boolean
