@@ -152,7 +152,22 @@ collections:
         required: false
       - label: "Content"
         name: "content"
+        required: false
         widget: "markdown"
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        required: false
+        date_format: "YYYY-MM-DD"
+        default: "{{now}}"
+      - label: "Link URL"
+        name: "linkUrl"
+        widget: "string"
+        required: false
+      - label: "Link Text"
+        name: "linkText"
+        widget: "string"
+        required: false
 
   - label: "Reports"
     name: "reports"
@@ -166,6 +181,12 @@ collections:
         name: "summary"
         widget: "string"
         required: false
+      - label: "Date"
+        name: "date"
+        required: false
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        default: "{{now}}"
       - label: "Content"
         name: "content"
         widget: "markdown"
