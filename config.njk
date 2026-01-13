@@ -154,6 +154,22 @@ collections:
         name: "content"
         widget: "markdown"
 
+  - label: "Reports"
+    name: "reports"
+    folder: "content/evals"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Summary"
+        name: "summary"
+        widget: "string"
+        required: false
+      - label: "Content"
+        name: "content"
+        widget: "markdown"
+
   - label: "FAQs"
     name: "faqs"
     folder: "content/faqs"
@@ -194,6 +210,7 @@ collections:
             widget: "string"
           - label: "Leading paragraph"
             name: "leadingParagraph"
+            required: false
             widget: "string"
           - label: "Hero Image"
             name: "heroImage"
@@ -207,6 +224,7 @@ collections:
             name: "quotes"
             hint: "2 quotes to be shown on the home page"
             widget: "list"
+            required: false
             fields:
               - label: "Quote Text"
                 name: "quoteText"
@@ -221,6 +239,7 @@ collections:
             name: "ourPrinciples"
             hint: "3 principles to be shown on the home page"
             widget: "list"
+            required: false
             fields:
               - label: "Principle Title"
                 name: "principleTitle"
@@ -241,9 +260,11 @@ collections:
             widget: "string"
           - label: "Leading paragraph"
             name: "leadingParagraph"
+            required: false
             widget: "string"
           - label: "Secondary paragraph"
             name: "secondaryParagraph"
+            required: false
             widget: "string"
             hint: "An additional secondary paragraph that will only show on desktop screens"
           - label: "Hero Image"
@@ -257,22 +278,28 @@ collections:
           - label: "Timeline"
             name: "timeline"
             widget: "list"
+            required: false
             fields:
               - label: "Date"
                 name: "date"
                 widget: "string"
+                required: false
               - label: "Description"
                 name: "description"
                 widget: "string"
+                required: false
           - label: "Sections"
             name: "sections"
             widget: "list"
+            required: false
             fields:
               - label: "Title"
                 name: "title"
+                required: false
                 widget: "string"
               - label: "Content"
                 name: "content"
+                required: false
                 widget: "markdown"
       - label: "Our Work"
         name: "ourWork"
@@ -289,9 +316,11 @@ collections:
                 options: ["Planning", "Education", "Government", "Frontline Services"]
               - label: "Short description"
                 name: "shortDescription"
+                required: false
                 widget: "string"
               - label: "Leading paragraph"
                 name: "leadingParagraph"
+                required: false
                 widget: "string"
                 hint: "A leading paragraph that will appear on the landing page of the category"
               - label: "Hide from live site"
@@ -307,6 +336,7 @@ collections:
             widget: "string"
           - label: "Leading paragraph"
             name: "leadingParagraph"
+            required: false
             widget: "string"
           - label: "Hero Image"
             name: "heroImage"
@@ -325,9 +355,11 @@ collections:
             widget: "string"
           - label: "Leading paragraph"
             name: "leadingParagraph"
+            required: false
             widget: "string"
           - label: "Secondary paragraph"
             name: "secondaryParagraph"
+            required: false
             widget: "string"
             hint: "An additional secondary paragraph that will only show on desktop screens"
           - label: "Hero Image"
@@ -341,6 +373,7 @@ collections:
           - label: "CTAs"
             name: "ctas"
             widget: "list"
+            required: false
             fields:
               - label: "Link text"
                 name: "linkText"
@@ -351,10 +384,12 @@ collections:
           - label: "Why Joi Us"
             name: "whyJoinUs"
             widget: "markdown"
+            required: false
           - label: "Images"
             name: "images"
             widget: "list"
             hint: "3 images to be shown on the careers page"
+            required: false
             fields:
               - label: "Image"
                 name: "image"
@@ -365,6 +400,7 @@ collections:
           - label: "Principles"
             name: "principles"
             widget: "list"
+            required: false
             fields:
               - label: "Title"
                 name: "title"
@@ -378,6 +414,7 @@ collections:
                 required: false
           - label: "Testimonials"
             name: "testimonials"
+            required: false
             widget: "list"
             hint: "5 testimonials to be shown on the careers page"
             fields:
