@@ -193,11 +193,27 @@
           data.whyJoinUs = converter.makeHtml(data.whyJoinUs);
           data.whyJoinUs = addWebsiteContentClasses(data.whyJoinUs);
         }
+        if (data.about) {
+          data.about = converter.makeHtml(data.about);
+          data.about = addWebsiteContentClasses(data.about);
+        }
+        if (data.latest) {
+          data.latest = converter.makeHtml(data.latest);
+          data.latest = addWebsiteContentClasses(data.latest);
+        }
         if (data.images && data.images.length > 0) {
           for (const image of data.images) {
             image.image = await getImage(imageCount);
             imageCount++;
           }
+        }
+        if (data.image) {
+          data.image = await getImage(imageCount);
+          imageCount++
+        }
+        if (data.secondImage) {
+          data.secondImage = await getImage(imageCount);
+          imageCount++;
         }
 
           this.iframe.contentWindow.postMessage(data, "*");
@@ -227,6 +243,8 @@
             previewUrl = "https://ai.gov.uk/insights";
           } else if (window.location.hash.includes("collections/website_content/entries/careers")) {
             previewUrl = "https://ai.gov.uk/opportunities";
+          } else if (window.location.hash.includes("collections/our_work_projects")) {
+            previewUrl = "http://localhost:4321/our-work/planning#extract";
           }
           return h('div', {},
             h('iframe', {
@@ -245,6 +263,7 @@
       CMS.registerPreviewTemplate("ourWork", Preview);
       CMS.registerPreviewTemplate("insights", Preview);
       CMS.registerPreviewTemplate("careers", Preview);
+      CMS.registerPreviewTemplate("our_work_projects", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
