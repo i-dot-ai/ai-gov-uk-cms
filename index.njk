@@ -117,8 +117,9 @@
             }
           }
 
-          function addKnowledgeHubClasses(content) {
-            return content
+          if (data.content) {
+            data.content = converter.makeHtml(data.content);
+            data.content = data.content
               .replaceAll('<h2', '<h2 class="govuk-heading-m"')
               .replaceAll('<h3', '<h3 class="govuk-heading-s"')
               .replaceAll('<h4', '<h4 class="govuk-heading-s"')
@@ -134,29 +135,6 @@
               .replaceAll('<td>', '<td class="govuk-table__cell">')
               .replaceAll('<blockquote>', '<div class="govuk-inset-text">')
               .replaceAll('</blockquote>', '</div>');
-            }
-
-          function addWebsiteContentClasses(content) {
-            return content
-              .replaceAll('<p></p>', '')
-              .replaceAll('<p>', '<p class="leading-[1.5] mb-4">')
-              .replace(/<a(\s|>)/g, '<a class="underline underline-offset-4 hover:decoration-1"$1') // to cover "<a " and "<a>" tags, but not <abbr>
-              .replaceAll('<h2', '<h2 class="text-3xl font-bold mt-10 mb-6"')
-              .replaceAll('<h3', '<h3 class="text-2xl font-bold mt-8 mb-3"')
-              .replaceAll('<h4', '<h4 class="text-xl font-bold mt-6 mb-3"')
-              .replaceAll('<h5', '<h5 class="text-lg font-bold mt-6 mb-3"')
-              .replaceAll('<h6', '<h6 class="text-lg font-bold mt-6 mb-3"')
-              .replaceAll('<ul', '<ul class="list-disc ml-4"')
-              .replaceAll('<li', '<li class="mb-3"')
-              .replaceAll('<ol', '<ol class="list-decimal ml-4"')
-              .replaceAll('<img', '<img class="w-full"');
-            }
-
-          // knowledge hub uses data.content
-          if (data.content) {
-            data.content = converter.makeHtml(data.content);
-            data.content = addKnowledgeHubClasses(data.content);
-
 
 
             if (!data.components) {
@@ -175,32 +153,6 @@
             }
           }
 
-        // website content markdown
-        if (data.weAreHiringParagraph) {
-          data.weAreHiringParagraph = converter.makeHtml(data.weAreHiringParagraph);
-          data.weAreHiringParagraph = addWebsiteContentClasses(data.weAreHiringParagraph);
-        }
-        if (data.sections && data.sections.length > 0) {
-          for (const section of data.sections) {
-            if (!section.content) {
-              continue;
-            }
-            section.content = converter.makeHtml(section.content);
-            section.content = addWebsiteContentClasses(section.content);
-          }
-        }
-        if (data.whyJoinUs) {
-          data.whyJoinUs = converter.makeHtml(data.whyJoinUs);
-          data.whyJoinUs = addWebsiteContentClasses(data.whyJoinUs);
-        }
-        if (data.about) {
-          data.about = converter.makeHtml(data.about);
-          data.about = addWebsiteContentClasses(data.about);
-        }
-        if (data.latest) {
-          data.latest = converter.makeHtml(data.latest);
-          data.latest = addWebsiteContentClasses(data.latest);
-        }
         if (data.images && data.images.length > 0) {
           for (const image of data.images) {
             image.image = await getImage(imageCount);
