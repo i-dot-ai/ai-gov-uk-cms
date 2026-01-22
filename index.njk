@@ -153,6 +153,21 @@
             }
           }
 
+        if (data.images && data.images.length > 0) {
+          for (const image of data.images) {
+            image.image = await getImage(imageCount);
+            imageCount++;
+          }
+        }
+        if (data.image) {
+          data.image = await getImage(imageCount);
+          imageCount++
+        }
+        if (data.secondImage) {
+          data.secondImage = await getImage(imageCount);
+          imageCount++;
+        }
+
           this.iframe.contentWindow.postMessage(data, "*");
           // in case this is sent before the the preview has loaded
           this.iframe.addEventListener("load", () => {
@@ -170,6 +185,18 @@
             previewUrl = "https://ai.gov.uk/evaluations/cms-preview";
           } else if (window.location.hash.includes("collections/knowledge_hub_guidance_pages")) {
             previewUrl = "https://ai.gov.uk/knowledge-hub/how-to/how-to-use-ai-at-work/";
+          } else if (window.location.hash.includes("collections/website_content/entries/home_page")) {
+            previewUrl = "https://ai.gov.uk/";
+          } else if (window.location.hash.includes("collections/website_content/entries/aboutUs")) {
+            previewUrl = "https://ai.gov.uk/about";
+          } else if (window.location.hash.includes("collections/website_content/entries/ourWork")) {
+            previewUrl = "https://ai.gov.uk/";
+          } else if (window.location.hash.includes("collections/website_content/entries/insights")) {
+            previewUrl = "https://ai.gov.uk/insights";
+          } else if (window.location.hash.includes("collections/website_content/entries/careers")) {
+            previewUrl = "https://ai.gov.uk/opportunities";
+          } else if (window.location.hash.includes("collections/our_work_projects")) {
+            previewUrl = "https://ai.gov.uk/our-work/planning#extract";
           }
           return h('div', {},
             h('iframe', {
@@ -183,6 +210,12 @@
       CMS.registerPreviewTemplate("blogs", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance_pages", Preview);
+      CMS.registerPreviewTemplate("home_page", Preview);
+      CMS.registerPreviewTemplate("aboutUs", Preview);
+      CMS.registerPreviewTemplate("ourWork", Preview);
+      CMS.registerPreviewTemplate("insights", Preview);
+      CMS.registerPreviewTemplate("careers", Preview);
+      CMS.registerPreviewTemplate("our_work_projects", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
