@@ -25,6 +25,163 @@
               required: false
 {% endmacro %}
 
+{% macro knowledgeHubTools() %}
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Created"
+        name: "created"
+        widget: "hidden"
+      - label: "Updated"
+        name: "updated"
+        widget: "hidden"
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        required: false
+        options: ["Find information", "Create and review documents", "Triage and route information", "Analyse data and text", "Run meetings and appointments", "Collect and clean data", "Digitise documents"]
+      - label: "Subcategory"
+        name: "subcategory"
+        widget: "select"
+        options: ["General tasks (most common)", "Predict and forecast information", "Transcribe discussions", "Identify themes and trends", "Check compliance and standards", "Reports and business documents", "Teaching aides and resources"]
+        required: false
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Synopsis"
+        name: "synopsis"
+        widget: "string"
+        required: false
+      - label: "Organisation"
+        name: "organisation"
+        widget: "string"
+        required: false
+        hint: "Separate multiple organisations with a slash (/)"
+      - label: "Government body"
+        name: "governmentBody"
+        widget: "select"
+        options: ["UK Government", "Local Government", "Scottish Government", "Welsh Government", "Northern Ireland Government"]
+        required: false
+      - label: "User Group"
+        name: "userGroup"
+        widget: "select"
+        options: ["Civil servants", "Wider public sector", "General public"]
+        required: false
+      - label: "Open source"
+        name: "openSource"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Use case Type"
+        name: "useCaseType"
+        widget: "select"
+        options: ["Reusable", "Specific"]
+        required: false
+      - label: "Type of technology"
+        name: "typeOfTechnology"
+        widget: "select"
+        options: ["Generative AI", "Machine learning", "Data or Infrastructure"]
+        required: false
+        multiple: true
+      - label: "Phase"
+        name: "phase"
+        widget: "select"
+        options: ["Alpha", "Beta", "Live", "Retired"]
+        required: false
+      - label: "Impact"
+        name: "impact"
+        widget: "select"
+        options: ["Time savings", "Cost savings", "Improved efficiency", "Better Customer experience"]
+        required: false
+        multiple: true
+      - label: "Challenge"
+        name: "challenge"
+        widget: "markdown"
+        required: false
+      - label: "Solution"
+        name: "solution"
+        widget: "markdown"
+        required: false
+      - label: "Results"
+        name: "results"
+        widget: "markdown"
+        required: false
+      - label: "Learnings"
+        name: "learnings"
+        widget: "markdown"
+        required: false
+      - label: "Links"
+        name: "links"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Link Text"
+            name: "text"
+            widget: "string"
+          - label: "Link url"
+            name: "url"
+            widget: "string"
+
+{% endmacro %}
+
+{% macro knowledgeHubPrompts() %}
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Created"
+        name: "created"
+        widget: "hidden"
+      - label: "Updated"
+        name: "updated"
+        widget: "hidden"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Hide from live site"
+        name: "hideFromLiveSite"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Find information", "Create and review documents", "Triage and route information", "Analyse data and text", "Run meetings and appointments", "Collect data and information","Digitise documents", "Learning and development"]
+      - label: "Subcategory"
+        name: "subcategory"
+        widget: "select"
+        options: ["General tasks", "Reports and business documents", "Teaching aides and resources", "Strategy and planning documents", "Design and user research resources", "Identify themes and trends", "Check compliance and standards", "Predict and forecast information", "Transcribe discussions", "Translate discussions", "Prompt development", "Personal development", "Personal productivity"]
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "string"
+        hint: "Use a comma to separate multiple tags"
+      - label: "Verfied"
+        name: "verified"
+        widget: "boolean"
+        default: true
+        required: false
+      - label: "What this prompt does: To be removed after Knowledge Hub is live"
+        name: "use"
+        widget: "markdown"
+        required: false
+      - label: "Content"
+        name: "content"
+        widget: "markdown"
+        required: false
+      - label: "Prompt"
+        name: "prompt"
+        widget: "markdown"
+      - label: "Feedback"
+        name: "feedback"
+        widget: "markdown"
+        required: false
+{% endmacro %}
+
 backend:
   name: {% if envs.runMode == "serve" %}test-repo{% else %}github{% endif %}
   repo: i-dot-ai/ai-gov-uk-cms-content
@@ -782,62 +939,31 @@ collections:
         choose_url: false
         hint: "The media outlet logo"
 
+  - label: "Knowledge Hub: Tools"
+    name: "knowledge_hub_tools"
+    folder: "content/knowledge_hub/tools"
+    create: true
+    {{ knowledgeHubTools() }}
+
   - label: "Knowledge Hub: Prompts"
     name: "knowledge_hub_prompts"
     folder: "content/knowledge_hub/prompts"
     create: true
     slug: "{{title}}"
-    fields: 
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Created"
-        name: "created"
-        widget: "hidden"
-      - label: "Updated"
-        name: "updated"
-        widget: "hidden"
-      - label: "Description"
-        name: "description"
-        widget: "string"
-      - label: "Hide from live site"
-        name: "hideFromLiveSite"
-        widget: "boolean"
-        default: false
-        required: false
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: ["Find information", "Create and review documents", "Triage and route information", "Analyse data and text", "Run meetings and appointments", "Collect data and information","Digitise documents", "Learning and development"]
-      - label: "Subcategory"
-        name: "subcategory"
-        widget: "select"
-        options: ["General tasks", "Reports and business documents", "Teaching aides and resources", "Strategy and planning documents", "Design and user research resources", "Identify themes and trends", "Check compliance and standards", "Predict and forecast information", "Transcribe discussions", "Translate discussions", "Prompt development", "Personal development", "Personal productivity"]
-        required: false
-      - label: "Tags"
-        name: "tags"
-        widget: "string"
-        hint: "Use a comma to separate multiple tags"
-      - label: "Verfied"
-        name: "verified"
-        widget: "boolean"
-        default: true
-        required: false
-      - label: "What this prompt does: To be removed after Knowledge Hub is live"
-        name: "use"
-        widget: "markdown"
-        required: false
-      - label: "Content"
-        name: "content"
-        widget: "markdown"
-        required: false
-      - label: "Prompt"
-        name: "prompt"
-        widget: "markdown"
-      - label: "Feedback"
-        name: "feedback"
-        widget: "markdown"
-        required: false
+    {{ knowledgeHubPrompts() }}
+
+  - label: "Knowledge Hub: Internal: Tools"
+    name: "knowledge_hub_internal_tools"
+    folder: "content/knowledge_hub/internal/tools"
+    create: true
+    {{ knowledgeHubTools() }}
+  
+  - label: "Knowledge Hub Internal: Prompts"
+    name: "knowledge_hub_internal_prompts"
+    folder: "content/knowledge_hub/internal/prompts"
+    create: true
+    slug: "{{title}}"
+    {{ knowledgeHubPrompts() }}
 
   - label: "Knowledge Hub: Capabilities"
     name: "knowledge_hub_capabilities"
