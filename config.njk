@@ -939,6 +939,85 @@ collections:
         choose_url: false
         hint: "The media outlet logo"
 
+  - label: "Knowledge Hub: Site Content"
+    name: "knowledge_hub_site_content"
+    files:
+      - label: "Landing page"
+        name: "landing_page"
+        file: "content/knowledge_hub/site_content/landing_page.yaml"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Hero Tag line"
+            name: "heroTagLine"
+            widget: "string"
+            required: false
+          - label: "Second Heading"
+            name: "secondHeading"
+            widget: "string"
+            required: false
+          - label: "Second paragraph"
+            name: "secondParagraph"
+            required: false
+            widget: "markdown"
+      - label: "About"
+        name: "about"
+        file: "content/knowledge_hub/site_content/about.yaml"
+        fields: 
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Content"
+            name: "content"
+            widget: "markdown"
+            required: false
+      - label: "Tools Library"
+        name: "tools"
+        file: "content/knowledge_hub/site_content/tools.yaml"
+        fields: 
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Leading paragraph"
+            name: "leadingParagraph"
+            widget: "string"
+            required: false
+          - label: "Content"
+            name: "content"
+            widget: "markdown"
+            required: false
+      - label: "Prompts Library"
+        name: "prompts"
+        file: "content/knowledge_hub/site_content/prompts.yaml"
+        fields: 
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Leading paragraph"
+            name: "leadingParagraph"
+            widget: "string"
+            required: false
+          - label: "Content"
+            name: "content"
+            widget: "markdown"
+            required: false
+      - label: "How tos"
+        name: "how_tos"
+        file: "content/knowledge_hub/site_content/how_tos.yaml"
+        fields: 
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Leading paragraph"
+            name: "leadingParagraph"
+            widget: "string"
+            required: false
+          - label: "Content"
+            name: "content"
+            widget: "markdown"
+            required: false
+
   - label: "Knowledge Hub: Tools"
     name: "knowledge_hub_tools"
     folder: "content/knowledge_hub/tools"
@@ -982,6 +1061,11 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Hide from live site"
+        name: "hideFromLiveSite"
+        widget: "boolean"
+        default: false
+        required: false
       - label: "Description"
         name: "description"
         widget: "markdown"
