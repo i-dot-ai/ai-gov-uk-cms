@@ -964,6 +964,14 @@ collections:
     create: true
     slug: "{{title}}"
     {{ knowledgeHubPrompts() }}
+      - label: "Synthesis Prompt"
+        name: "synthesisPrompt"
+        widget: "markdown"
+        required: false
+      - label: "Coach Prompt"
+        name: "coachPrompt"
+        widget: "markdown"
+        required: false
 
   - label: "Knowledge Hub: Capabilities"
     name: "knowledge_hub_capabilities"
