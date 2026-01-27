@@ -118,23 +118,6 @@
           }
 
           if (data.content) {
-            data.content = converter.makeHtml(data.content);
-            data.content = data.content
-              .replaceAll('<h2', '<h2 class="govuk-heading-m"')
-              .replaceAll('<h3', '<h3 class="govuk-heading-s"')
-              .replaceAll('<h4', '<h4 class="govuk-heading-s"')
-              .replaceAll('<h5', '<h5 class="govuk-heading-s"')
-              .replaceAll('<h6', '<h6 class="govuk-heading-s"')
-              .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">')
-              .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">')
-              .replaceAll('<table>', '<table class="govuk-table">')
-              .replaceAll('<thead>', '<thead class="govuk-table__head">')
-              .replaceAll('<tbody>', '<tbody class="govuk-table__body">')
-              .replaceAll('<tr>', '<tr class="govuk-table__row">')
-              .replaceAll('<th>', '<th scope="col" class="govuk-table__header">')
-              .replaceAll('<td>', '<td class="govuk-table__cell">')
-              .replaceAll('<blockquote>', '<div class="govuk-inset-text">')
-              .replaceAll('</blockquote>', '</div>');
 
 
             if (!data.components) {
@@ -197,6 +180,26 @@
             previewUrl = "https://ai.gov.uk/opportunities";
           } else if (window.location.hash.includes("collections/our_work_projects")) {
             previewUrl = "https://ai.gov.uk/our-work/planning#extract";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/landing_page")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/about")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/about";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/tools")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/tools";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/prompts")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/prompts";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/how_tos")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/how-to";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/coo_registry")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/directory";
+          } else if (window.location.hash.includes("/collections/knowledge_hub_prompts") || window.location.hash.includes("/collections/knowledge_hub_internal_prompts")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/prompts/explain-a-complex-topic-for-a-beginner";
+          } else if (window.location.hash.includes("/collections/knowledge_hub_tools")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/tools/mia";
+          } else if (window.location.hash.includes("/collections/knowledge_hub_internal_tools")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/tools/a-cubed-dwp-ask";
+          } else if (window.location.hash.includes("/collections/knowledge_hub_capabilities")) {
+            previewUrl = "https://ai.gov.uk/knowledge-hub/capability/create-and-review-documents";
           }
           return h('div', {},
             h('iframe', {
@@ -216,6 +219,17 @@
       CMS.registerPreviewTemplate("insights", Preview);
       CMS.registerPreviewTemplate("careers", Preview);
       CMS.registerPreviewTemplate("our_work_projects", Preview);
+      CMS.registerPreviewTemplate("landing_page", Preview);
+      CMS.registerPreviewTemplate("about", Preview);
+      CMS.registerPreviewTemplate("tools", Preview);
+      CMS.registerPreviewTemplate("prompts", Preview);
+      CMS.registerPreviewTemplate("how_tos", Preview);
+      CMS.registerPreviewTemplate("coo_registry", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_prompts", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_internal_prompts", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_tools", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_internal_tools", Preview);
+      CMS.registerPreviewTemplate("knowledge_hub_capabilities", Preview);
       CMS.registerPreviewStyle(`
         iframe {
           width: 100%;
