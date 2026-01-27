@@ -1077,6 +1077,10 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Short description"
+        name: "shortDescription"
+        widget: "string"
+        required: false
       - label: "Hide from live site"
         name: "hideFromLiveSite"
         widget: "boolean"
@@ -1084,6 +1088,28 @@ collections:
         required: false
       - label: "Description"
         name: "description"
+        widget: "markdown"
+
+  - label: "Knowledge Hub: Professions"
+    name: "knowledge_hub_professions"
+    folder: "content/knowledge_hub/professions"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Short description"
+        name: "shortDescription"
+        widget: "string"
+        required: false
+      - label: "Hide from live site"
+        name: "hideFromLiveSite"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Content"
+        name: "content"
         widget: "markdown"
 
   - label: "Knowledge Hub: Guidance pages"
