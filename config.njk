@@ -507,6 +507,17 @@ collections:
                 name: "description"
                 widget: "string"
                 required: false
+          - label: "What we do"
+            name: "whatWeDo"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
           - label: "Sections"
             name: "sections"
             widget: "list"
@@ -600,10 +611,21 @@ collections:
               - label: "Link url"
                 name: "linkUrl"
                 widget: "string"
-          - label: "Why Joi Us"
+          - label: "Why Join Us - Paragraph 1"
             name: "whyJoinUs"
             widget: "markdown"
             required: false
+          - label: "Why Join Us - Sections"
+            name: "whyJoinUsSections"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
           - label: "Images"
             name: "images"
             widget: "list"
