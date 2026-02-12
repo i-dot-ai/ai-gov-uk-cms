@@ -190,6 +190,7 @@ backend:
   use_graphql: true
   squash_merges: true
 publish_mode: editorial_workflow
+open_authoring: true
 media_folder: "static/images/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 logo_url: https://ai.gov.uk/img/i-dot-ai-Official-Logo.svg 
@@ -1155,6 +1156,11 @@ collections:
         widget: "select"
         options: ["Policy"]
         required: false
+      - label: "PR diff"
+        name: "viewPrDiff"
+        widget: "prDiffLink"
+        required: false
+        hint: "Opens the pull request diff for this draft on GitHub. Display only."
 
   - label: "Internal KH: Use case directory"
     name: "knowledge_hub_use_case_directory"
