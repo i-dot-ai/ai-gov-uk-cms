@@ -4,7 +4,7 @@
   "description": "Content Management System for ai.gov.uk website",
   "main": "index.js",
   "scripts": {
-    "serve": "npx @11ty/eleventy --serve"
+    "serve": "npx @11ty/eleventy --serve "
   },
   "author": "",
   "dependencies": {
