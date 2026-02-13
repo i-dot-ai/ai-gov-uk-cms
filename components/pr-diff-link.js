@@ -2,6 +2,10 @@
   const GITHUB_REPO = "i-dot-ai/ai-gov-uk-cms-content";
   const DEFAULT_BRANCH = "main";
 
+  const backend = CMS.getBackend();
+  const user = backend.currentUser();
+  console.log('user', user);
+
   function getWorkflowBranchFromHash() {
     const hash = window.location.hash.slice(1);
     const match = hash.match(/\/collections\/([^/]+)\/entries\/([^/]+)/);
