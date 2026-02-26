@@ -14,8 +14,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-
+    <script
+      src="https://unpkg.com/slugify@1.6.6/slugify.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
       const convertDate = (dateStr) => {
           const months = [
               "January", "February", "March", "April", "May", "June",
@@ -163,6 +166,13 @@
           const entryTitle = window.location.hash.split("/").pop();
           const data = this.props.entry.getIn(['data']).toJS();
 
+          const getSlug = (fallBackSlug, lower = true) => {
+            if (entryTitle === 'new') {
+              return fallBackSlug;
+            }
+            return data.slug ?? slugify(data.title ?? 'fallBackSlug', { lower: lower });
+          };
+
           if (window.location.hash.includes("collections/blogs")) {
             previewUrl = "https://ai.gov.uk/blogs/preview";
           } else if (window.location.hash.includes("collections/projects")) {
@@ -194,19 +204,19 @@
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/coo_registry")) {
             previewUrl = "https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/directory?entry=coo_registry";
           } else if (window.location.hash.includes("collections/knowledge_hub_guidance_pages")) {
-            const slug = entryTitle === 'new' ? 'how-to-use-ai-at-work' : data.slug || entryTitle;
+            const slug = getSlug('how-to-use-ai-at-work', false);
             previewUrl = `https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/how-to/${slug}/${entryTitle === 'new' ? '' : `?entry=${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_prompts") || window.location.hash.includes("/collections/knowledge_hub_internal_prompts")) {
-            const slug = entryTitle === 'new' ? 'explain-a-complex-topic-for-a-beginner' : data.slug || entryTitle;
+            const slug = getSlug('explain-a-complex-topic-for-a-beginner');
             previewUrl = `https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/prompts/${slug}/${entryTitle === 'new' ? '' : `?entry=${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_tools") || window.location.hash.includes("/collections/knowledge_hub_internal_tools")) {
-            const slug = entryTitle === 'new' ? 'mia' : data.slug || entryTitle;
+            const slug = getSlug('mia');
             previewUrl = `https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/tools/${slug}/${entryTitle === 'new' ? '' : `?entry=${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_capabilities")) {
-            const slug = entryTitle === 'new' ? 'create-and-review-documents' : data.slug || entryTitle;
+            const slug = getSlug('create-and-review-documents');
             previewUrl = `https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/capability/${slug}/${entryTitle === 'new' ? '' : `?entry=${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_professions")) {
-            const slug = entryTitle === 'new' ? 'policy' : data.slug || entryTitle;
+            const slug = getSlug('policy');
             previewUrl = `https://knowledge-hub-internal-dev.ai.cabinetoffice.gov.uk/profession/${slug}/${entryTitle === 'new' ? '' : `?entry=${entryTitle}`}`;
           }
           return h('div', {},
