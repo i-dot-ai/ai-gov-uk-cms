@@ -193,32 +193,32 @@
           } else if (window.location.hash.includes("collections/our_work_projects")) {
             previewUrl = "https://ai.gov.uk/our-work/planning#extract";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/landing_page")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk?entry=landing_page";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk?entry=cms/knowledge_hub_site_content/landing_page";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/about")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/about?entry=about";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/about?entry=cms/knowledge_hub_site_content/about";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/tools")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/tools?entry=tools";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/tools?entry=cms/knowledge_hub_site_content/tools";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/prompts")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/prompts?entry=prompts";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/prompts?entry=cms/knowledge_hub_site_content/prompts";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/how_tos")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to?entry=how_tos";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to?entry=cms/knowledge_hub_site_content/how_tos";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/coo_registry")) {
-            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/directory?entry=coo_registry";
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/directory?entry=cms/knowledge_hub_site_content/coo_registry";
           } else if (window.location.hash.includes("collections/knowledge_hub_guidance_pages")) {
             const slug = getSlug('how-to-use-ai-at-work', false);
-            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to/${slug}/${entryTitle === 'new' ? '' : `?entry=${collection}/${entryTitle}`}`;
+            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_prompts") || window.location.hash.includes("/collections/knowledge_hub_internal_prompts")) {
             const slug = getSlug('explain-a-complex-topic-for-a-beginner');
-            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/prompts/${slug}/${entryTitle === 'new' ? '' : `?entry=${collection}/${entryTitle}`}`;
+            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/prompts/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_tools") || window.location.hash.includes("/collections/knowledge_hub_internal_tools")) {
             const slug = getSlug('mia');
-            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/tools/${slug}/${entryTitle === 'new' ? '' : `?entry=${collection}/${entryTitle}`}`;
+            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/tools/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_capabilities")) {
             const slug = getSlug('create-and-review-documents');
-            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/capability/${slug}/${entryTitle === 'new' ? '' : `?entry=${collection}/${entryTitle}`}`;
+            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/capability/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
           } else if (window.location.hash.includes("/collections/knowledge_hub_professions")) {
             const slug = getSlug('policy');
-            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/profession/${slug}/${entryTitle === 'new' ? '' : `?entry=${collection}/${entryTitle}`}`;
+            previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/profession/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
           }
           return h('div', {},
             h('iframe', {
