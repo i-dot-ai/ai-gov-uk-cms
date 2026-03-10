@@ -204,6 +204,8 @@
             previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to?entry=cms/knowledge_hub_site_content/how_tos";
           } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/coo_registry")) {
             previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/directory?entry=cms/knowledge_hub_site_content/coo_registry";
+          } else if (window.location.hash.includes("collections/knowledge_hub_site_content/entries/cookie_policy")) {
+            previewUrl = "https://knowledge-hub-internal.dev.i.ai.gov.uk/cookie-policy?entry=cms/knowledge_hub_site_content/cookie_policy";
           } else if (window.location.hash.includes("collections/knowledge_hub_guidance_pages")) {
             const slug = getSlug('how-to-use-ai-at-work', false);
             previewUrl = `https://knowledge-hub-internal.dev.i.ai.gov.uk/how-to/${slug}/${entryTitle === 'new' ? '' : `?entry=cms/${collection}/${entryTitle}`}`;
@@ -244,6 +246,7 @@
       CMS.registerPreviewTemplate("prompts", Preview);
       CMS.registerPreviewTemplate("how_tos", Preview);
       CMS.registerPreviewTemplate("coo_registry", Preview);
+      CMS.registerPreviewTemplate("cookie_policy", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_prompts", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_internal_prompts", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_tools", Preview);
