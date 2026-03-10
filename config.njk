@@ -1053,6 +1053,30 @@ collections:
             name: "content"
             widget: "markdown"
             required: false
+      - label: "Cookie Policy"
+        name: "cookie_policy"
+        file: "content/knowledge_hub/site_content/cookie_policy.yaml"
+        fields: 
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Content"
+            name: "content"
+            widget: "markdown"
+            required: false
+          - label: "Preference Radio Button"
+            name: "preferenceRadioButton"
+            widget: "object"
+            fields:
+              - label: "Preference Text"
+                name: "preferenceText"
+                widget: "string"
+              - label: "Accept Cookies Text"
+                name: "acceptCookiesText"
+                widget: "string"
+              - label: "Reject Cookies Text"
+                name: "rejectCookiesText"
+                widget: "string"
 
   - label: "Knowledge Hub: Tools"
     name: "knowledge_hub_tools"
