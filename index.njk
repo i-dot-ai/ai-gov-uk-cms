@@ -179,7 +179,7 @@
           } else if (window.location.hash.includes("collections/projects")) {
             previewUrl = "https://ai.gov.uk/projects/preview";
           } else if (window.location.hash.includes("collections/evals")) {
-            previewUrl = "https://ai.gov.uk/evaluations/cms-preview";
+            previewUrl = "https://ai.gov.uk/evaluations/consult-evaluation-dwps-pathways-to-work-consultation/";
           } else if (window.location.hash.includes("collections/website_content/entries/home_page")) {
             previewUrl = "https://ai.gov.uk/";
           } else if (window.location.hash.includes("collections/website_content/entries/aboutUs")) {
@@ -232,6 +232,7 @@
       });
 
       CMS.registerPreviewTemplate("blogs", Preview);
+      CMS.registerPreviewTemplate("evals", Preview);
       CMS.registerPreviewTemplate("projects", Preview);
       CMS.registerPreviewTemplate("knowledge_hub_guidance_pages", Preview);
       CMS.registerPreviewTemplate("home_page", Preview);
