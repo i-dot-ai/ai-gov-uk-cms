@@ -9,6 +9,7 @@ const ASSETS_FOLDER = "./_site/assets";
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("components/");
+  eleventyConfig.addPassthroughCopy("public/");
 
   // Copy static assets over from CMS repo
   eleventyConfig.on("eleventy.before", async ({ dir, runMode, outputMode }) => {
